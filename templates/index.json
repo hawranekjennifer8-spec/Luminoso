@@ -1,0 +1,10 @@
+<!-- LUXURY HOMEPAGE - LUMINOSO JEWELRY -->
+{% section 'hero-luxury' %}
+{% section 'best-sellers' %}
+{% section 'shop-by-category' %}
+{% section 'brand-story' %}
+{% section 'featured-collections' %}
+{% section 'customer-reviews' %}
+{% section 'instagram-feed' %}
+{% section 'premium-packaging' %}
+{% section 'trust-section' %}

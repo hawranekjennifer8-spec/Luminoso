@@ -1,0 +1,98 @@
+<!-- INSTAGRAM FEED SECTION -->
+<section class="section section--light">
+  <div class="container">
+    <h2 class="section__title">@luminoso on Instagram</h2>
+    <div class="instagram-grid">
+      <div class="insta-item">
+        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&h=300&fit=crop" alt="Instagram post">
+        <div class="insta-overlay">
+          <a href="https://instagram.com/luminoso" target="_blank" class="insta-link">❤️ Like</a>
+        </div>
+      </div>
+      <div class="insta-item">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&h=300&fit=crop" alt="Instagram post">
+        <div class="insta-overlay">
+          <a href="https://instagram.com/luminoso" target="_blank" class="insta-link">❤️ Like</a>
+        </div>
+      </div>
+      <div class="insta-item">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&h=300&fit=crop" alt="Instagram post">
+        <div class="insta-overlay">
+          <a href="https://instagram.com/luminoso" target="_blank" class="insta-link">❤️ Like</a>
+        </div>
+      </div>
+      <div class="insta-item">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&h=300&fit=crop" alt="Instagram post">
+        <div class="insta-overlay">
+          <a href="https://instagram.com/luminoso" target="_blank" class="insta-link">❤️ Like</a>
+        </div>
+      </div>
+      <div class="insta-item">
+        <img src="https://images.unsplash.com/photo-1515562141207-6cf88ab4d4fe?w=300&h=300&fit=crop" alt="Instagram post">
+        <div class="insta-overlay">
+          <a href="https://instagram.com/luminoso" target="_blank" class="insta-link">❤️ Like</a>
+        </div>
+      </div>
+      <div class="insta-item">
+        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&h=300&fit=crop" alt="Instagram post">
+        <div class="insta-overlay">
+          <a href="https://instagram.com/luminoso" target="_blank" class="insta-link">❤️ Like</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://instagram.com/luminoso" target="_blank" class="button button--primary button--lg">Follow Us</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .insta-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    cursor: pointer;
+  }
+
+  .insta-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .insta-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .insta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  .insta-item:hover .insta-overlay {
+    opacity: 1;
+  }
+
+  .insta-link {
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+</style>

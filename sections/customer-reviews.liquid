@@ -1,0 +1,60 @@
+<!-- CUSTOMER REVIEWS SECTION -->
+<section class="section section--light">
+  <div class="container">
+    <h2 class="section__title">Loved by Customers</h2>
+    <div class="reviews-grid">
+      <div class="review-card scroll-reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The quality is absolutely stunning. My necklace arrived beautifully packaged and the attention to detail is impeccable. Highly recommended!"</p>
+        <p class="review-author">— Sarah M.</p>
+      </div>
+
+      <div class="review-card scroll-reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've worn this bracelet every day for 6 months and it still looks as beautiful as the day I received it. Luminoso is my go-to jewelry brand."</p>
+        <p class="review-author">— Emma K.</p>
+      </div>
+
+      <div class="review-card scroll-reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Customer service was exceptional. They helped me find the perfect ring. The luxury packaging made it an unforgettable gift."</p>
+        <p class="review-author">— Michael T.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .review-card {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-normal);
+  }
+
+  .review-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .review-stars {
+    color: var(--color-accent-gold);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .review-text {
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .review-author {
+    font-weight: 600;
+    color: var(--color-primary-black);
+  }
+</style>

@@ -1,0 +1,17 @@
+<!-- FEATURED COLLECTIONS -->
+<section class="section section--light">
+  <div class="container">
+    <h2 class="section__title">Featured Collections</h2>
+    <div class="section__grid">
+      {% for collection in shop.collections limit: 3 %}
+        <div class="collection-card scroll-reveal">
+          <div class="collection-image">
+            <img src="{{ collection.image | img_url: '400x300' }}" alt="{{ collection.title }}">
+          </div>
+          <h3>{{ collection.title }}</h3>
+          <a href="{{ collection.url }}" class="button button--outline">Explore</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

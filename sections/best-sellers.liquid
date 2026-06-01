@@ -1,0 +1,33 @@
+<!-- BEST SELLERS SECTION -->
+<section class="section section--light">
+  <div class="container">
+    <h2 class="section__title">Best Sellers</h2>
+    <div class="section__grid">
+      {% for product in collections.best-sellers.products limit: 4 %}
+        <div class="product-card scroll-reveal">
+          <div class="product-card__image">
+            <img src="{{ product.featured_image | img_url: '400x500' }}" alt="{{ product.title }}">
+            {% if product.images[1] %}
+              <img src="{{ product.images[1] | img_url: '400x500' }}" alt="{{ product.title }}" class="product-card__image-secondary">
+            {% endif %}
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">{{ product.title }}</h3>
+            <div class="product-card__price">
+              {% if product.compare_at_price > product.price %}
+                <span class="product-card__price--original">{{ product.compare_at_price | money }}</span>
+                <span class="product-card__price--sale">{{ product.price | money }}</span>
+              {% else %}
+                <span>{{ product.price | money }}</span>
+              {% endif %}
+            </div>
+            <form action="/cart/add" method="post" class="product-card__add-to-cart">
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <button type="submit" class="button button--primary button--sm">Add to Bag</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

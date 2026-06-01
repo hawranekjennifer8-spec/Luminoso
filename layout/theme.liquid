@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="{{ page_description | escape }}">
+  
+  <!-- SEO & Social Meta -->
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:image" content="https:{{ 'logo.jpg' | asset_url | replace: 'https:', '' }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  
+  <title>{% if page_title == "Home" %}{{ shop.name }} - Premium Luxus Schmuck{% else %}{{ page_title | escape }} – {{ shop.name }}{% endif %}</title>
+  
+  {% if canonical_url %}
+    <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+  
+  <!-- Fonts - Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ 'luxury-base.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'luxury-components.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'animations.css' | asset_url }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+  <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  
+  <!-- Shopify -->
+  {{ content_for_head }}
+</head>
+<body id="body-{{ template.name | replace: '.', '-' }}" class="template-{{ template | replace: '/', '-' }}">
+  
+  <!-- Skip to main content -->
+  <a href="#main" class="sr-only">Skip to main content</a>
+  
+  <!-- Header -->
+  {% section 'header' %}
+  
+  <!-- Main -->
+  <main id="main" class="main-content" role="main">
+    {% if template == 'index' %}
+      {{ content_for_layout }}
+    {% else %}
+      <div class="page-wrapper">
+        <div class="page-container">
+          {{ content_for_layout }}
+        </div>
+      </div>
+    {% endif %}
+  </main>
+  
+  <!-- Footer -->
+  {% section 'footer' %}
+  
+  <!-- Quick Cart Preview -->
+  <div id="cart-sidebar" class="cart-sidebar" data-cart-sidebar>
+    <div class="cart-sidebar__content">
+      <div class="cart-sidebar__header">
+        <h2 class="cart-sidebar__title">Your Bag</h2>
+        <button class="cart-sidebar__close" data-close-cart>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </div>
+      <div class="cart-sidebar__items" data-cart-items></div>
+      <div class="cart-sidebar__footer">
+        <div class="cart-sidebar__subtotal">
+          <span>Subtotal:</span>
+          <span data-cart-subtotal>{{ cart.total_price | money }}</span>
+        </div>
+        <a href="/cart" class="button button--primary button--full">View Cart & Checkout</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="{{ 'luxury-app.js' | asset_url }}" defer></script>
+  
+  <!-- Shopify -->
+  {{ content_for_footer }}
+  
+  <!-- Analytics & Tracking -->
+  <script>
+    // Google Analytics 4 (Add your ID)
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_ID');
+    
+    // Facebook Pixel (Add your ID)
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    // Add your Facebook Pixel ID
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!-- PRODUCT PAGE -->
+<div class="page-wrapper">
+  <div class="page-container">
+    <div class="breadcrumbs" data-breadcrumbs>
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/collections/{{ product.collections.first.handle }}">{{ product.collections.first.title }}</a>
+      <span>/</span>
+      <span>{{ product.title }}</span>
+    </div>
+
+    <div class="product-page">
+      <div class="product-gallery">
+        <div class="gallery-main">
+          <img id="main-image" src="{{ product.featured_image | img_url: '800x800' }}" alt="{{ product.title }}" class="gallery-main__image">
+        </div>
+        <div class="gallery-thumbs">
+          {% for image in product.images %}
+            <button class="gallery-thumb" data-image="{{ image | img_url: '200x200' }}">
+              <img src="{{ image | img_url: '200x200' }}" alt="Product image">
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="product-info">
+        <div class="product-header">
+          <h1 class="product-title">{{ product.title }}</h1>
+          <div class="product-rating">
+            <div class="stars" data-rating="5">★★★★★</div>
+            <span class="rating-text">({{ product.metafields.reviews.rating.value | default: 5 }} / 5)</span>
+          </div>
+        </div>
+
+        <div class="product-price">
+          {% if product.compare_at_price > product.price %}
+            <span class="price--original">{{ product.compare_at_price | money }}</span>
+            <span class="price--sale">{{ product.price | money }}</span>
+          {% else %}
+            <span class="price">{{ product.price | money }}</span>
+          {% endif %}
+          <span class="product-sku">SKU: {{ product.selected_or_first_available_variant.sku }}</span>
+        </div>
+
+        <div class="product-description">
+          {{ product.description }}
+        </div>
+
+        <!-- Product Options -->
+        <form action="/cart/add" method="post" id="product-form" class="product-form">
+          {% for option in product.options_with_values %}
+            <div class="product-option">
+              <label for="option-{{ forloop.index0 }}" class="option-label">{{ option.name }}</label>
+              <select id="option-{{ forloop.index0 }}" name="options[{{ option.name }}]" class="option-select">
+                {% for value in option.values %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+
+          <div class="product-quantity">
+            <label for="quantity">Quantity</label>
+            <div class="quantity-selector">
+              <button type="button" class="qty-btn qty-minus">−</button>
+              <input type="number" id="quantity" name="quantity" value="1" min="1">
+              <button type="button" class="qty-btn qty-plus">+</button>
+            </div>
+          </div>
+
+          <button type="submit" class="button button--primary button--lg button--add-to-cart">
+            Add to Bag
+          </button>
+        </form>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+          <div class="badge">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <span>Premium Quality</span>
+          </div>
+          <div class="badge">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+            <span>Easy Returns</span>
+          </div>
+          <div class="badge">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+            <span>Free Shipping</span>
+          </div>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="shipping-info">
+          <p><strong>Shipping:</strong> FREE on orders over €50</p>
+          <p><strong>Returns:</strong> 30-day money back guarantee</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="product-tabs">
+      <button class="tab-button active" data-tab="details">Product Details</button>
+      <button class="tab-button" data-tab="faq">FAQ</button>
+      <button class="tab-button" data-tab="reviews">Reviews</button>
+    </div>
+
+    <div class="tab-content">
+      <div id="details-tab" class="tab-pane active">
+        <h3>Product Details</h3>
+        <ul>
+          <li><strong>Material:</strong> {{ product.metafields.product.material.value }}</li>
+          <li><strong>Care:</strong> {{ product.metafields.product.care.value }}</li>
+          <li><strong>Warranty:</strong> Lifetime warranty</li>
+        </ul>
+      </div>
+
+      <div id="faq-tab" class="tab-pane">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h4 class="faq-question">How do I care for my jewelry?</h4>
+            <p class="faq-answer">Clean gently with a soft cloth. Avoid exposure to chemicals and extreme temperatures.</p>
+          </div>
+          <div class="faq-item">
+            <h4 class="faq-question">What is your return policy?</h4>
+            <p class="faq-answer">30-day returns on unused items in original packaging.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="reviews-tab" class="tab-pane">
+        <h3>Customer Reviews</h3>
+        <div class="reviews-list">
+          {% for comment in product.metafields.reviews.comments %}
+            <div class="review-item">
+              <div class="review-header">
+                <strong>{{ comment.author }}</strong>
+                <span class="review-rating">★★★★★</span>
+              </div>
+              <p>{{ comment.body }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <section class="related-products">
+      <h2>You Might Also Like</h2>
+      <div class="products-grid">
+        {% for product in collection.products limit: 4 %}
+          {% include 'product-card' %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="{{ 'product-page.js' | asset_url }}" defer></script>

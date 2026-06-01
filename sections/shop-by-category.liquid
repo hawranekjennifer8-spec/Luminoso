@@ -1,0 +1,77 @@
+<!-- SHOP BY CATEGORY SECTION -->
+<section class="section section--dark">
+  <div class="container">
+    <h2 class="section__title" style="color: white;">Shop by Category</h2>
+    <div class="categories-grid">
+      <div class="category-card">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=300&fit=crop" alt="Necklaces">
+        </div>
+        <h3>Necklaces</h3>
+        <a href="/collections/necklaces" class="button button--outline" style="color: white; border-color: white;">Shop Now</a>
+      </div>
+
+      <div class="category-card">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=300&fit=crop" alt="Bracelets">
+        </div>
+        <h3>Bracelets</h3>
+        <a href="/collections/bracelets" class="button button--outline" style="color: white; border-color: white;">Shop Now</a>
+      </div>
+
+      <div class="category-card">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=300&fit=crop" alt="Rings">
+        </div>
+        <h3>Rings</h3>
+        <a href="/collections/rings" class="button button--outline" style="color: white; border-color: white;">Shop Now</a>
+      </div>
+
+      <div class="category-card">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1515562141207-6cf88ab4d4fe?w=400&h=300&fit=crop" alt="Earrings">
+        </div>
+        <h3>Earrings</h3>
+        <a href="/collections/earrings" class="button button--outline" style="color: white; border-color: white;">Shop Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-2xl);
+  }
+
+  .category-card {
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+
+  .category-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .category-card:hover .category-image img {
+    transform: scale(1.1);
+  }
+
+  .category-card h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+</style>
