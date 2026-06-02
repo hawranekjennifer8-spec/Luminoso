@@ -1,0 +1,144 @@
+<!-- ALL PRODUCTS SECTION -->
+<section class="section section--dark section--all-products">
+  <div class="container">
+    <div class="section__heading section__heading--center">
+      <p class="section__eyebrow">Complete Collection</p>
+      <h2 class="section__title">All Products</h2>
+      <p class="section__text">Browse the full Luminoso selection of luxury jewelry in one elegant place.</p>
+    </div>
+
+    {% if collections.all.products.size > 0 %}
+      <div class="product-grid product-grid--max-columns-4">
+        {% for product in collections.all.products limit: 12 %}
+          <article class="product-card scroll-reveal">
+            <a href="{{ product.url }}" class="product-card__link">
+              {% if product.featured_image %}
+                <div class="product-card__image">
+                  <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}">
+                </div>
+              {% endif %}
+              <div class="product-card__meta">
+                <h3 class="product-card__title">{{ product.title }}</h3>
+                <p class="product-card__vendor">{{ product.vendor }}</p>
+                <div class="product-card__price">
+                  {% if product.compare_at_price_max > product.price_max %}
+                    <span class="product-card__price--original">{{ product.compare_at_price_max | money }}</span>
+                    <span class="product-card__price--sale">{{ product.price_max | money }}</span>
+                  {% else %}
+                    <span>{{ product.price_max | money }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+
+      <div class="section__cta-wrap">
+        <a href="/collections/all" class="button button--gold button--lg">View Full Collection</a>
+      </div>
+    {% else %}
+      <p class="section__text">Dieses Theme ist bereit für deine Produkte. Bitte füge Produkte in Shopify hinzu, damit sie hier angezeigt werden.</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .section--all-products .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .product-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.18);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  }
+
+  .product-card__image {
+    overflow: hidden;
+    border-radius: 24px;
+    margin-bottom: 1rem;
+  }
+
+  .product-card__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.7s ease;
+  }
+
+  .product-card:hover .product-card__image img {
+    transform: scale(1.06);
+  }
+
+  .product-card__meta {
+    padding: 0 0.25rem;
+  }
+
+  .product-card__title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: #f9f8f6;
+  }
+
+  .product-card__vendor {
+    color: rgba(249,248,246,0.65);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .product-card__price {
+    font-weight: 600;
+    color: #f9f8f6;
+  }
+
+  .product-card__price--original {
+    text-decoration: line-through;
+    color: rgba(249,248,246,0.6);
+    margin-right: 0.5rem;
+  }
+
+  .section__heading--center {
+    text-align: center;
+  }
+
+  .section__eyebrow {
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #e7c97d;
+    margin-bottom: 0.75rem;
+  }
+
+  .section__text {
+    color: rgba(249,248,246,0.82);
+    margin: 0 auto;
+    max-width: 720px;
+  }
+
+  .section__cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "All Products",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {"name": "All Products"}
+  ]
+}
+{% endschema %}

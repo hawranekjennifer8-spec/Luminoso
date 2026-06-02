@@ -1,0 +1,188 @@
+<!-- 3D RING HERO SECTION -->
+<section class="hero-ring-3d">
+  <div class="hero-ring-3d__scene">
+    {% if section.settings.spline_scene_url != blank %}
+      <iframe
+        src="{{ section.settings.spline_scene_url }}"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy"
+        title="3D Ring Scene"
+      ></iframe>
+    {% else %}
+      <div class="hero-ring-3d__fallback">
+        {% if section.settings.fallback_image != blank %}
+          <img
+            src="{{ section.settings.fallback_image | img_url: '1600x900' }}"
+            alt="3D Ring Hero"
+          />
+        {% else %}
+          <img
+            src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=1600&h=900&fit=crop"
+            alt="3D Ring Hero"
+          />
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="hero-ring-3d__overlay"></div>
+  </div>
+
+  <div class="hero-ring-3d__content">
+    <p class="hero-ring-3d__eyebrow">{{ section.settings.eyebrow_text }}</p>
+    <h1 class="hero-ring-3d__title">{{ section.settings.heading }}</h1>
+    <p class="hero-ring-3d__subtitle">{{ section.settings.subheading }}</p>
+    <a href="{{ section.settings.cta_link }}" class="button button--gold button--lg hero-ring-3d__cta">{{ section.settings.cta_text }}</a>
+  </div>
+</section>
+
+<style>
+  .hero-ring-3d {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #050505;
+    margin-top: 80px;
+  }
+
+  .hero-ring-3d__scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-ring-3d__scene iframe,
+  .hero-ring-3d__fallback {
+    width: calc(100% - 6rem);
+    height: calc(100% - 8rem);
+    border-radius: 48px;
+    overflow: hidden;
+    box-shadow: inset 0 0 120px rgba(0,0,0,0.35), 0 40px 120px rgba(0,0,0,0.45);
+    transform: scale(1);
+    transition: transform 0.6s ease;
+  }
+
+  .hero-ring-3d__scene:hover iframe,
+  .hero-ring-3d__scene:hover .hero-ring-3d__fallback {
+    transform: scale(1.01);
+  }
+
+  .hero-ring-3d__fallback {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-ring-3d__fallback img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.88;
+    transform: scale(1.02);
+    transition: transform 0.7s ease;
+  }
+
+  .hero-ring-3d__fallback:hover img {
+    transform: scale(1.06);
+  }
+
+  .hero-ring-3d__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 5, 5, 0.16), rgba(5, 5, 5, 0.9));
+    pointer-events: none;
+  }
+
+  .hero-ring-3d__content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    color: #f9f8f6;
+  }
+
+  .hero-ring-3d__eyebrow {
+    color: #e7c97d;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero-ring-3d__title {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-ring-3d__subtitle {
+    font-size: 1.15rem;
+    color: rgba(249, 248, 246, 0.82);
+    margin-bottom: 2rem;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-ring-3d__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .hero-ring-3d__cta:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .hero-ring-3d {
+      min-height: 72vh;
+      margin-top: 70px;
+    }
+
+    .hero-ring-3d__content {
+      padding: 1.5rem;
+    }
+
+    .hero-ring-3d__title {
+      font-size: clamp(2.25rem, 8vw, 3rem);
+    }
+
+    .hero-ring-3d__subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Ring 3D",
+  "settings": [
+    {"type": "text", "id": "eyebrow_text", "label": "Eyebrow Text", "default": "Exklusive Kreationen"},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Brillant-Ring in 3D‑Animation"},
+    {"type": "text", "id": "subheading", "label": "Subheading", "default": "Erlebe unsere erlesene Ring-Kollektion in einem luxuriösen 3D-Hero mit Bewegung, Licht und Premium-Finish."},
+    {"type": "url", "id": "cta_link", "label": "CTA Link", "default": "/collections/all"},
+    {"type": "text", "id": "cta_text", "label": "CTA Text", "default": "Zur Kollektion"},
+    {"type": "url", "id": "spline_scene_url", "label": "Spline Scene URL", "default": "https://prod.spline.design/your-scene-id/scene.splinecode"},
+    {"type": "image_picker", "id": "fallback_image", "label": "Fallback Ring Image"}
+  ],
+  "blocks": [],
+  "presets": [
+    {"name": "Hero Ring 3D"}
+  ]
+}
+{% endschema %}

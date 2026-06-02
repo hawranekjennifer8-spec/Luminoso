@@ -1,0 +1,122 @@
+<!-- 404 - NOT FOUND PAGE -->
+<div class="page-wrapper page-wrapper--404">
+  <div class="page-container">
+    <div class="error-section">
+      <div class="error-section__content">
+        <h1 class="error-section__title">404</h1>
+        <h2 class="error-section__heading">Seite nicht gefunden</h2>
+        <p class="error-section__description">
+          Die Seite, die Sie suchen, existiert leider nicht. 
+          Vielleicht wurde sie verschoben oder gelöscht.
+        </p>
+        <p class="error-section__subtext">
+          Wir helfen Ihnen gerne weiter. Besuchen Sie unsere Startseite oder stöbern Sie durch unsere Kollektion.
+        </p>
+        <div class="error-section__actions">
+          <a href="/" class="button button--gold button--lg">Zur Startseite</a>
+          <a href="/collections/all" class="button button--outline button--lg">Zur Kollektion</a>
+        </div>
+      </div>
+
+      <div class="error-section__image">
+        <svg viewBox="0 0 400 300" class="error-illustration">
+          <rect width="400" height="300" fill="none"/>
+          <circle cx="200" cy="100" r="60" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <text x="200" y="110" text-anchor="middle" font-size="48" font-weight="bold" fill="#D4AF37">?</text>
+          <path d="M 80 200 Q 200 150 320 200" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .page-wrapper--404 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+    margin-top: 80px;
+  }
+
+  .error-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .error-section__content {
+    padding: 2rem;
+  }
+
+  .error-section__title {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #D4AF37;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+  }
+
+  .error-section__heading {
+    font-size: 2.5rem;
+    color: #F9F8F6;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .error-section__description {
+    font-size: 1.1rem;
+    color: rgba(249, 248, 246, 0.82);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .error-section__subtext {
+    color: rgba(249, 248, 246, 0.65);
+    margin-bottom: 2rem;
+  }
+
+  .error-section__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .error-section__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-illustration {
+    width: 300px;
+    height: 300px;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 768px) {
+    .error-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .error-section__title {
+      font-size: 4rem;
+    }
+
+    .error-section__heading {
+      font-size: 1.75rem;
+    }
+
+    .error-section__actions {
+      flex-direction: column;
+    }
+
+    .error-illustration {
+      width: 200px;
+      height: 200px;
+    }
+  }
+</style>

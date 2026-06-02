@@ -1,10 +1,42 @@
-<!-- LUXURY HOMEPAGE - LUMINOSO JEWELRY -->
-{% section 'hero-luxury' %}
-{% section 'best-sellers' %}
-{% section 'shop-by-category' %}
-{% section 'brand-story' %}
-{% section 'featured-collections' %}
-{% section 'customer-reviews' %}
-{% section 'instagram-feed' %}
-{% section 'premium-packaging' %}
-{% section 'trust-section' %}
+{
+  "sections": {
+    "hero-ring-3d": {
+      "type": "hero-ring-3d"
+    },
+    "all-products": {
+      "type": "all-products"
+    },
+    "best-sellers": {
+      "type": "best-sellers"
+    },
+    "shop-by-category": {
+      "type": "shop-by-category"
+    },
+    "featured-collections": {
+      "type": "featured-collections"
+    },
+    "customer-reviews": {
+      "type": "customer-reviews"
+    },
+    "instagram-feed": {
+      "type": "instagram-feed"
+    },
+    "premium-packaging": {
+      "type": "premium-packaging"
+    },
+    "trust-section": {
+      "type": "trust-section"
+    }
+  },
+  "order": [
+    "hero-ring-3d",
+    "all-products",
+    "best-sellers",
+    "shop-by-category",
+    "featured-collections",
+    "customer-reviews",
+    "instagram-feed",
+    "premium-packaging",
+    "trust-section"
+  ]
+}
