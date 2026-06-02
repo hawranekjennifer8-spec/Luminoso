@@ -130,7 +130,23 @@ Luminoso/
 
 ---
 
-## 🚀 Installation
+## � Umfassende Anleitung
+
+👉 **[Website Builder Setup Guide](./website-builder-setup.md)** — Vollständige Schritt-für-Schritt Anleitung zur Gestaltung deiner Luminoso-Website
+
+Diese Anleitung enthält:
+- ✅ GitHub-Integration
+- ✅ Theme-Aktivierung
+- ✅ Produktverwaltung
+- ✅ Homepage gestalten
+- ✅ Rechtliche Seiten
+- ✅ Design anpassen
+- ✅ SEO-Optimierung
+- ✅ Live-Schaltung
+
+---
+
+## �🚀 Installation
 
 ### Zu Shopify Theme hochladen:
 
