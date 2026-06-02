@@ -1,13 +1,231 @@
-<!-- LUXURY HOMEPAGE - LUMINOSO JEWELRY -->
+<!-- LUXURY HOMEPAGE - LUMINOSO JEWELRY COMPLETE -->
 <main id="main" role="main" class="main-content">
-  {% section 'hero-ring-3d' %}
-  {% section 'all-products' %}
-  {% section 'best-sellers' %}
-  {% section 'shop-by-category' %}
-  {% section 'featured-collections' %}
-  {% section 'brand-story' %}
-  {% section 'customer-reviews' %}
-  {% section 'instagram-feed' %}
-  {% section 'premium-packaging' %}
-  {% section 'trust-section' %}
+  
+  <!-- 3D RING HERO SECTION -->
+  <section class="hero-ring-3d">
+    <div class="hero-ring-3d__scene">
+      <div class="hero-ring-3d__fallback">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1600&h=900&fit=crop" alt="Luxury Ring Collection" />
+      </div>
+      <div class="hero-ring-3d__overlay"></div>
+    </div>
+    <div class="hero-ring-3d__content">
+      <p class="hero-ring-3d__eyebrow">Exklusive Schmuckkollektion</p>
+      <h1 class="hero-ring-3d__title">Timeless Elegance</h1>
+      <p class="hero-ring-3d__subtitle">Premium-Schmuck handgefertigt für außergewöhnliche Momente. Jedes Stück ein Meisterwerk von Luminoso.</p>
+      <a href="/collections/all" class="button button--gold button--lg hero-ring-3d__cta">Zur Kollektion</a>
+    </div>
+  </section>
+
+  <!-- ALL PRODUCTS SECTION -->
+  <section class="section section--dark section--all-products">
+    <div class="container">
+      <div class="section__heading section__heading--center">
+        <p class="section__eyebrow">Vollständige Kollektion</p>
+        <h2 class="section__title">Alle Produkte</h2>
+        <p class="section__text">Stöbern Sie durch unsere exklusiven Schmuckstücke – handgefertigt, elegant, zeitlos.</p>
+      </div>
+
+      {% if collections.all.products.size > 0 %}
+        <div class="product-grid product-grid--max-columns-4">
+          {% for product in collections.all.products limit: 12 %}
+            <article class="product-card">
+              <a href="{{ product.url }}" class="product-card__link">
+                {% if product.featured_image %}
+                  <div class="product-card__image">
+                    <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" loading="lazy">
+                  </div>
+                {% endif %}
+                <div class="product-card__meta">
+                  <h3 class="product-card__title">{{ product.title }}</h3>
+                  <p class="product-card__vendor">{{ product.vendor }}</p>
+                  <div class="product-card__price">
+                    {% if product.compare_at_price_max > product.price_max %}
+                      <span class="product-card__price--original">{{ product.compare_at_price_max | money }}</span>
+                      <span class="product-card__price--sale">{{ product.price_max | money }}</span>
+                    {% else %}
+                      <span>{{ product.price_max | money }}</span>
+                    {% endif %}
+                  </div>
+                </a>
+                </a>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+        <div class="section__cta-wrap">
+          <a href="/collections/all" class="button button--gold button--lg">Alle Produkte anzeigen</a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- SHOP BY CATEGORY SECTION -->
+  <section class="section section--dark section--categories">
+    <div class="container">
+      <h2 class="section__title" style="color: white; text-align: center; margin-bottom: 3rem;">Nach Kategorie shoppen</h2>
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=300&fit=crop" alt="Halsketten">
+          </div>
+          <h3>Halsketten</h3>
+          <a href="/collections/necklaces" class="button button--outline">Shoppen</a>
+        </div>
+
+        <div class="category-card">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=300&fit=crop" alt="Armbänder">
+          </div>
+          <h3>Armbänder</h3>
+          <a href="/collections/bracelets" class="button button--outline">Shoppen</a>
+        </div>
+
+        <div class="category-card">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=300&fit=crop" alt="Ringe">
+          </div>
+          <h3>Ringe</h3>
+          <a href="/collections/rings" class="button button--outline">Shoppen</a>
+        </div>
+
+        <div class="category-card">
+          <div class="category-image">
+            <img src="https://images.unsplash.com/photo-1515562141207-6cf88ab4d4fe?w=400&h=300&fit=crop" alt="Ohrringe">
+          </div>
+          <h3>Ohrringe</h3>
+          <a href="/collections/earrings" class="button button--outline">Shoppen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST SECTION -->
+  <section class="section section--light">
+    <div class="container">
+      <h2 class="section__title" style="text-align: center; margin-bottom: 3rem;">Warum Luminoso?</h2>
+      <div class="trust-section">
+        <div class="trust-item">
+          <h4 class="trust-item__title">🛡️ Sichere Zahlungen</h4>
+          <p class="trust-item__description">256-Bit verschlüsselt via Shopify Payments</p>
+        </div>
+        <div class="trust-item">
+          <h4 class="trust-item__title">📦 Versand frei</h4>
+          <p class="trust-item__description">KOSTENLOS ab €50 in Deutschland</p>
+        </div>
+        <div class="trust-item">
+          <h4 class="trust-item__title">↩️ 30 Tage Rückgabe</h4>
+          <p class="trust-item__description">Volle Rückerstattung oder Umtausch</p>
+        </div>
+        <div class="trust-item">
+          <h4 class="trust-item__title">✨ Premium-Qualität</h4>
+          <p class="trust-item__description">Handgefertigt mit Lebenszeitgarantie</p>
+        </div>
+        <div class="trust-item">
+          <h4 class="trust-item__title">💬 Kundensupport</h4>
+          <p class="trust-item__description">Hilfreicher Support via Email & Chat</p>
+        </div>
+        <div class="trust-item">
+          <h4 class="trust-item__title">✅ Zertifiziert</h4>
+          <p class="trust-item__description">Deutsche Rechtskompliance & DSGVO</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS SECTION -->
+  <section class="section section--dark">
+    <div class="container">
+      <h2 class="section__title" style="color: white; text-align: center; margin-bottom: 3rem;">Kundenbewertungen</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Die Qualität ist absolut atemberaubend. Meine Halskette kam wunderschön verpackt an und die Liebe zum Detail ist unübertroffen. Sehr empfohlen!"</p>
+          <p class="review-author">— Sarah M.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ich trage dieses Armband täglich seit 6 Monaten und es sieht noch immer so schön aus wie am ersten Tag. Luminoso ist meine Lieblings-Schmuckmarke."</p>
+          <p class="review-author">— Emma K.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Der Kundenservice war außergewöhnlich. Sie halfen mir, den perfekten Ring zu finden. Die Luxus-Verpackung machte es zu einem unvergesslichen Geschenk."</p>
+          <p class="review-author">— Michael T.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / BRAND STORY -->
+  <section class="section section--light">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2 class="section__title">Die Geschichte von Luminoso</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 2rem;">
+          Luminoso ist die Verkörperung von zeitloser Eleganz und Premium-Handwerk. Jedes Schmuckstück wird mit Sorgfalt und Leidenschaft gefertigt – für Momente, die zählen. Unser Engagement: Luxus, der bleibt.
+        </p>
+        <a href="/collections/all" class="button button--gold">Entdecken Sie mehr</a>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<style>
+  .hero-ring-3d { position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #050505; margin-top: 80px; }
+  .hero-ring-3d__scene { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .hero-ring-3d__fallback { width: calc(100% - 6rem); height: calc(100% - 8rem); border-radius: 48px; overflow: hidden; box-shadow: inset 0 0 120px rgba(0,0,0,0.35), 0 40px 120px rgba(0,0,0,0.45); }
+  .hero-ring-3d__fallback img { width: 100%; height: 100%; object-fit: cover; opacity: 0.88; }
+  .hero-ring-3d__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 5, 5, 0.16), rgba(5, 5, 5, 0.9)); pointer-events: none; }
+  .hero-ring-3d__content { position: relative; z-index: 2; max-width: 720px; text-align: center; color: #f9f8f6; }
+  .hero-ring-3d__eyebrow { color: #e7c97d; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; }
+  .hero-ring-3d__title { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.95; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -1px; }
+  .hero-ring-3d__subtitle { font-size: 1.15rem; color: rgba(249, 248, 246, 0.82); margin-bottom: 2rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+  .hero-ring-3d__cta { display: inline-flex; align-items: center; justify-content: center; min-width: 220px; padding: 1rem 2rem; transition: transform 0.3s ease; }
+  .hero-ring-3d__cta:hover { transform: translateY(-2px); }
+  
+  .section--dark { background: #050505; color: #f9f8f6; }
+  .section--light { background: #f9f8f6; color: #111; }
+  .section { padding: 4rem 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .section__title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+  .section__eyebrow { letter-spacing: 0.3em; text-transform: uppercase; color: #e7c97d; margin-bottom: 0.75rem; font-size: 0.9rem; }
+  .section__heading--center { text-align: center; }
+  .section__cta-wrap { display: flex; justify-content: center; margin-top: 2.5rem; }
+  
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 2rem; }
+  .product-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 1rem; transition: all 0.3s ease; }
+  .product-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.18); }
+  .product-card__image { overflow: hidden; border-radius: 24px; margin-bottom: 1rem; }
+  .product-card__image img { width: 100%; height: auto; transition: transform 0.7s ease; }
+  .product-card:hover .product-card__image img { transform: scale(1.06); }
+  .product-card__title { font-size: 1.15rem; margin-bottom: 0.5rem; color: #f9f8f6; font-weight: 600; }
+  .product-card__vendor { color: rgba(249,248,246,0.65); margin-bottom: 0.75rem; font-size: 0.95rem; }
+  .product-card__price { font-weight: 600; color: #f9f8f6; }
+  .product-card__price--original { text-decoration: line-through; color: rgba(249,248,246,0.6); margin-right: 0.5rem; }
+  
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .category-card { text-align: center; color: white; }
+  .category-image { overflow: hidden; border-radius: 12px; aspect-ratio: 1; margin-bottom: 1rem; }
+  .category-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+  .category-card:hover .category-image img { transform: scale(1.1); }
+  
+  .trust-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+  .trust-item { text-align: center; padding: 1.5rem; }
+  .trust-item__title { font-weight: 600; margin-bottom: 0.5rem; }
+  .trust-item__description { font-size: 0.9rem; color: #666; }
+  
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .review-card { background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 12px; }
+  .review-stars { color: #e7c97d; margin-bottom: 1rem; }
+  .review-text { font-style: italic; line-height: 1.8; margin-bottom: 1rem; }
+  .review-author { font-weight: 600; }
+  
+  @media (max-width: 768px) {
+    .product-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
+    .hero-ring-3d { min-height: 60vh; margin-top: 70px; }
+  }
+</style>
